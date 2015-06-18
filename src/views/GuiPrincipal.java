@@ -2,6 +2,7 @@ package views;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
@@ -17,7 +18,6 @@ import java.util.Collections;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -44,14 +44,13 @@ public class GuiPrincipal extends JFrame {
 			lblJogadorAtual, lblJogadorAtualNome, lblPinoLegendaJogador1,
 			lblPinoLegendaJogador2, lblPinoLegendaJogador3,
 			lblPinoLegendaJogador4, lblLegendaJogador1, lblLegendaJogador2,
-			lblLegendaJogador3, lblLegendaJogador4, lblDocumentos, lblRodada, lblCartaJogador;
+			lblLegendaJogador3, lblLegendaJogador4, lblDocumentos, lblRodada, lblCartaJogador, btnSelecionarPergunta, btnSelecionarSorteReves;
 	public Jogador jogador1 = new Jogador(), jogador2 = new Jogador(),
 			jogador3 = new Jogador(), jogador4 = new Jogador(),
 			jogadorAtual = new Jogador();
 	private JMenu mnPrincipal, mnAjuda;
 	private JMenuItem miSobre, miSair; // mnPrincipal;
 	private JMenuItem miAjuda; // mnAjuda;
-	private JButton btnSelecionarPergunta;
 	private Dimension d;
 
 	/**
@@ -123,7 +122,7 @@ public class GuiPrincipal extends JFrame {
 
 				d.width - 172, d.width - 225, d.width - 278, d.width - 329,
 				d.width - 381, d.width - 433, d.width - 485, d.width - 539,
-				d.width - 592, d.width - 644,/* 10 */d.width - 696,
+				d.width - 592, d.width - 644, d.width - 696,
 				d.width - 748, d.width - 800, d.width - 852, d.width - 904,
 				d.width - 957,
 
@@ -138,7 +137,7 @@ public class GuiPrincipal extends JFrame {
 
 				d.width - 198, d.width - 249, d.width - 302, d.width - 355,
 				d.width - 407, d.width - 457, d.width - 510, d.width - 562,
-				d.width - 615, d.width - 667,/* 10 */d.width - 719,
+				d.width - 615, d.width - 667, d.width - 719,
 				d.width - 771, d.width - 823, d.width - 875, d.width - 927,
 				d.width - 982,
 
@@ -153,7 +152,7 @@ public class GuiPrincipal extends JFrame {
 
 				d.width - 172, d.width - 225, d.width - 278, d.width - 329,
 				d.width - 381, d.width - 433, d.width - 485, d.width - 539,
-				d.width - 592, d.width - 644,/* 10 */d.width - 696,
+				d.width - 592, d.width - 644, d.width - 696,
 				d.width - 748, d.width - 800, d.width - 852, d.width - 904,
 				d.width - 957,
 
@@ -164,19 +163,19 @@ public class GuiPrincipal extends JFrame {
 
 		int[] yp1 = { 50, 130, 181, 234, 287, 340, 390, 440, 492, 545, 596,
 				649, 649, 649, 649, 649, 649, 649, 649, 649, 649, 649, 649,
-				649, 649, 649, 649,/* */598, 546, 494, 443, 391, 339, 287,
+				649, 649, 649, 649, 598, 546, 494, 443, 391, 339, 287,
 				236, 184, 132, 80, 80 };
 		int[] yp2 = { 50, 130, 181, 234, 287, 340, 390, 440, 492, 545, 596,
 				649, 649, 649, 649, 649, 649, 649, 649, 649, 649, 649, 649,
-				649, 649, 649, 649, /* */598, 546, 494, 443, 391, 339, 287,
+				649, 649, 649, 649, 598, 546, 494, 443, 391, 339, 287,
 				236, 184, 132, 80, 80 };
 		int[] yp3 = { 75, 154, 205, 260, 313, 366, 418, 468, 518, 568, 618,
 				672, 672, 672, 672, 672, 672, 672, 672, 672, 672, 672, 672,
-				672, 672, 672, 672, /* */620, 568, 516, 465, 413, 361, 309,
+				672, 672, 672, 672, 620, 568, 516, 465, 413, 361, 309,
 				258, 206, 154, 102, 102 };
 		int[] yp4 = { 75, 154, 205, 260, 313, 366, 418, 468, 518, 568, 618,
 				672, 672, 672, 672, 672, 672, 672, 672, 672, 672, 672, 672,
-				672, 672, 672, 672, /* */620, 568, 516, 465, 413, 361, 309,
+				672, 672, 672, 672, 620, 568, 516, 465, 413, 361, 309,
 				258, 206, 154, 102, 102 };
 
 		if (!isMove) {
@@ -454,7 +453,8 @@ public class GuiPrincipal extends JFrame {
 		}
 		lblJogadorAtual = new JLabel("Jogador atual: ");
 		lblJogadorAtualNome = new JLabel("");
-		btnSelecionarPergunta = new JButton("Sortear pergunta");
+		btnSelecionarPergunta = new JLabel("");
+		btnSelecionarSorteReves = new JLabel("");
 		lblDocumentos = new JLabel("");
 		lblRodada = new JLabel("Rodada: "+rodada);
 		lblCartaJogador = new JLabel("");
@@ -498,8 +498,34 @@ public class GuiPrincipal extends JFrame {
 		lblJogadorAtualNome.setBounds(175, 50, 80, 25);
 		lblCartaJogador.setBounds(50, 150, 201, 207);
 		lblRodada.setBounds(50, 80, 150, 25);
-		btnSelecionarPergunta.setBounds(522, 530, 200, 50);
+		btnSelecionarPergunta.setBounds(55, 375, 189, 110);
+		btnSelecionarPergunta.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		
+		try {
+			img = ImageIO.read(new File("Btn_Selecionar_Pergunta.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
+		ImageIcon imageIcon = new ImageIcon(img); // load the image to a
+													// imageIcon
+
+		btnSelecionarPergunta.setIcon(imageIcon);
+		
+		btnSelecionarSorteReves.setBounds(55, 375, 189, 110);
+		btnSelecionarSorteReves.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		
+		try {
+			img = ImageIO.read(new File("Btn_Selecionar_Sorte_Reves.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		imageIcon = new ImageIcon(img); // load the image to a
+													// imageIcon
+
+		btnSelecionarSorteReves.setIcon(imageIcon);
+		
 		add(lblLegendaJogador1);
 		add(lblLegendaJogador2);
 		add(lblLegendaJogador3);
@@ -509,6 +535,7 @@ public class GuiPrincipal extends JFrame {
 		add(lblRodada);
 		add(lblCartaJogador);
 		add(btnSelecionarPergunta);
+		add(btnSelecionarSorteReves);
 		lblJogadorAtual.setFont(f1);
 		lblJogadorAtualNome.setFont(f1);
 		lblRodada.setFont(f1);
@@ -541,53 +568,115 @@ public class GuiPrincipal extends JFrame {
 				GuiAjuda.abrir();
 			}
 		});
-
-		btnSelecionarPergunta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				PerguntasDAO perguntasDao = new PerguntasDAO();
-				Pergunta pergunta = new Pergunta();
-				pergunta = perguntasDao.selecionarPergunta();
-				boolean resposta = false;
-				try {
-					resposta = perguntasDao.validarResposta(
-							pergunta,
-							JOptionPane.showInputDialog(
-									pergunta.getDescricao().replace("/", "\n")
-											+ "\n"
-											+ pergunta.getResposta()
-													.getDescA_Resposta()
-													.replace("/", "\n")
-											+ "\n"
-											+ pergunta.getResposta()
-													.getDescB_Resposta()
-													.replace("/", "\n")
-											+ "\n"
-											+ pergunta.getResposta()
-													.getDescC_Resposta()
-													.replace("/", "\n"))
-									.substring(0, 1));
-				} catch (NullPointerException e) {
-					resposta = false;
-				} catch (StringIndexOutOfBoundsException e) {
-					resposta = false;
-				}
-
-				if (resposta) {
-					JOptionPane.showMessageDialog(null,
-							"Resposta correta! Você avançou 1 casa :D");
-					drawPinos(1, getJogadorAtualId(), true);
-					avancarCasas(1);
-				} else {
-					JOptionPane.showMessageDialog(null, "Resposta incorreta!");
-					JOptionPane.showMessageDialog(null, "Sua punição será: "
-							+ pergunta.getPunicao().getDescricao());
-					realizarPunicao(pergunta.getPunicao().getAcao());
-				}
-				alterarJogador();
+		
+		btnSelecionarPergunta.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
 			}
-
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(!jogadorAtual.isParametrizacao()){
+					PerguntasDAO perguntasDao = new PerguntasDAO();
+					Pergunta pergunta = new Pergunta();
+					pergunta = perguntasDao.selecionarPergunta();
+					boolean resposta = false;
+					try {
+						resposta = perguntasDao.validarResposta(
+								pergunta,
+								JOptionPane.showInputDialog(
+										pergunta.getDescricao().replace("/", "\n")
+												+ "\n"
+												+ pergunta.getResposta()
+														.getDescA_Resposta()
+														.replace("/", "\n")
+												+ "\n"
+												+ pergunta.getResposta()
+														.getDescB_Resposta()
+														.replace("/", "\n")
+												+ "\n"
+												+ pergunta.getResposta()
+														.getDescC_Resposta()
+														.replace("/", "\n"))
+										.substring(0, 1));
+					} catch (NullPointerException erro) {
+						resposta = false;
+					} catch (StringIndexOutOfBoundsException erro) {
+						resposta = false;
+					}
+	
+					if (resposta) {
+						JOptionPane.showMessageDialog(null,
+								"Resposta correta! Você avançou 1 casa :D");
+						drawPinos(1, getJogadorAtualId(), true);
+						avancarCasas(1);
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta incorreta!");
+						JOptionPane.showMessageDialog(null, "Sua punição será: "
+								+ pergunta.getPunicao().getDescricao());
+						realizarPunicao(pergunta.getPunicao().getAcao());
+					}
+					alterarJogador();
+				}else{
+					JOptionPane.showMessageDialog(null, "Você está na parametrização. Por favor, utilize o botão \"Sortear carta Sorte/Revés\" ");
+				}
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
 		});
 		
+		btnSelecionarSorteReves.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+
 		lblCartaJogador.addMouseListener(new MouseListener() {
 			
 			@Override
