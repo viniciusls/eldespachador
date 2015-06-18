@@ -33,7 +33,7 @@ private BD bd = new BD();
 			this.setCodigo(rs.getLong("cod_SorteReves"));
 			this.setDescricao(rs.getString("carta_SorteReves"));
 			Punicao punicao = new Punicao();
-			this.setPunicao(punicao.getPunicaoById(
+			this.setAcao(punicao.getPunicaoById(
 					rs.getInt("acao_SorteReves"), bd));
 			this.setCor(rs.getString("cor_SorteReves"));
 		} catch (SQLException e) {
@@ -60,7 +60,7 @@ private BD bd = new BD();
 				sorteRevesObj.setCodigo(rs.getLong("cod_SorteReves"));
 				sorteRevesObj.setDescricao(rs.getString("carta_SorteReves"));
 				Punicao punicao = new Punicao();
-				sorteRevesObj.setPunicao(punicao.getPunicaoById(
+				sorteRevesObj.setAcao(punicao.getPunicaoById(
 						rs.getInt("acao_SorteReves"), bd));
 				sorteRevesObj.setCor(rs.getString("cor_SorteReves"));
 				sorteRevesArray.add(sorteRevesObj);
