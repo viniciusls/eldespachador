@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.SortedSet;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -28,8 +29,10 @@ import javax.swing.JOptionPane;
 import models.Jogador;
 import models.Pergunta;
 import models.Produto;
+import models.SorteReves;
 import dao.PerguntasDAO;
 import dao.ProdutosDAO;
+import dao.SorteRevesDAO;
 
 public class GuiPrincipal extends JFrame {
 
@@ -512,7 +515,7 @@ public class GuiPrincipal extends JFrame {
 
 		btnSelecionarPergunta.setIcon(imageIcon);
 		
-		btnSelecionarSorteReves.setBounds(55, 375, 189, 110);
+		btnSelecionarSorteReves.setBounds(55, 505, 189, 110);
 		btnSelecionarSorteReves.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		try {
@@ -617,7 +620,7 @@ public class GuiPrincipal extends JFrame {
 						JOptionPane.showMessageDialog(null, "Resposta incorreta!");
 						JOptionPane.showMessageDialog(null, "Sua punição será: "
 								+ pergunta.getPunicao().getDescricao());
-						realizarPunicao(pergunta.getPunicao().getAcao());
+						realizarAcao(pergunta.getPunicao().getAcao());
 					}
 					alterarJogador();
 				}else{
@@ -654,7 +657,15 @@ public class GuiPrincipal extends JFrame {
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
+				if(jogadorAtual.isParametrizacao()){
+					SorteRevesDAO sorteRevesDao = new SorteRevesDAO();
+					SorteReves sorteReves = new SorteReves();
+					sorteReves = sorteRevesDao.selecionarSorteReves(jogadorAtual.getCor());
+					
+					JOptionPane.showMessageDialog(null, "Sua ação será: "
+							+ sorteReves.getAcao().getDescricao());
+					realizarAcao(sorteReves.getAcao().getAcao());
+				}
 				
 			}
 			
@@ -898,7 +909,7 @@ public class GuiPrincipal extends JFrame {
 	}
 
 
-	public void realizarPunicao(String acao) {
+	public void realizarAcao(String acao) {
 		String acao_wout_param = acao.substring(0, acao.indexOf("("));
 		int acao_param;
 		switch (acao_wout_param) {

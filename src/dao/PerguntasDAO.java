@@ -68,5 +68,4 @@ public class PerguntasDAO extends Pergunta {
 		return this;
 	}
 	
-	
 }
