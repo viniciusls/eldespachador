@@ -7,12 +7,9 @@ import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
-import bd.BD;
-import models.Pergunta;
-import models.Produto;
 import models.Punicao;
-import models.Resposta;
 import models.SorteReves;
+import bd.BD;
 
 public class SorteRevesDAO extends SorteReves{
 private BD bd = new BD();

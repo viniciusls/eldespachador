@@ -501,6 +501,7 @@ public class GuiPrincipal extends JFrame {
 		lblJogadorAtualNome.setBounds(175, 50, 80, 25);
 		lblCartaJogador.setBounds(50, 150, 201, 207);
 		lblRodada.setBounds(50, 80, 150, 25);
+		lblDocumentos.setBounds(50, 100, 150, 25);
 		btnSelecionarPergunta.setBounds(55, 375, 189, 110);
 		btnSelecionarPergunta.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
@@ -536,12 +537,14 @@ public class GuiPrincipal extends JFrame {
 		add(lblJogadorAtual);
 		add(lblJogadorAtualNome);
 		add(lblRodada);
+		add(lblDocumentos);
 		add(lblCartaJogador);
 		add(btnSelecionarPergunta);
 		add(btnSelecionarSorteReves);
 		lblJogadorAtual.setFont(f1);
 		lblJogadorAtualNome.setFont(f1);
 		lblRodada.setFont(f1);
+		lblDocumentos.setFont(f1);
 		setJMenuBar(mb);
 	}
 
@@ -665,6 +668,8 @@ public class GuiPrincipal extends JFrame {
 					JOptionPane.showMessageDialog(null, "Sua ação será: "
 							+ sorteReves.getAcao().getDescricao());
 					realizarAcao(sorteReves.getAcao().getAcao());
+				}else{
+					JOptionPane.showMessageDialog(null, "Você não está na parametrização. Por favor, utilize o botão \"Selecionar Pergunta\" ");
 				}
 				
 			}
@@ -787,7 +792,7 @@ public class GuiPrincipal extends JFrame {
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		imageIcon = new ImageIcon(newimg); // transform it back
 		lblCartaJogador.setIcon(imageIcon);
-		lblDocumentos.setText(""+jogadorAtual.getDocumentos());
+		lblDocumentos.setText("Documentos: "+jogadorAtual.getDocumentos());
 		JOptionPane.showMessageDialog(null,
 				"O jogador selecionado para iniciar é: " + iniciante + " - "
 						+ nome + ". Boa sorte!");
@@ -872,7 +877,7 @@ public class GuiPrincipal extends JFrame {
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		imageIcon = new ImageIcon(newimg); // transform it back
 		lblCartaJogador.setIcon(imageIcon);
-		lblDocumentos.setText(""+jogadorAtual.getDocumentos());
+		lblDocumentos.setText("Documentos: "+jogadorAtual.getDocumentos());
 	}
 	
 	private boolean validaJogador(int id){
