@@ -222,10 +222,10 @@ public class GuiInicio extends JFrame {
 	}
 
 	public void chamar() {
-		Jogador jogador1 = new Jogador(txtNomeJogador1.getText(), 0, 0, false, null, 5);
-		Jogador jogador2 = new Jogador(txtNomeJogador2.getText(), 0, 0, false, null, 5);
-		Jogador jogador3 = new Jogador(txtNomeJogador3.getText(), 0, 0, false, null, 5);
-		Jogador jogador4 = new Jogador(txtNomeJogador4.getText(), 0, 0, false, null, 5);
+		Jogador jogador1 = new Jogador(txtNomeJogador1.getText(), 0, 0, false, null, null, 5);
+		Jogador jogador2 = new Jogador(txtNomeJogador2.getText(), 0, 0, false, null, null, 5);
+		Jogador jogador3 = new Jogador(txtNomeJogador3.getText(), 0, 0, false, null, null, 5);
+		Jogador jogador4 = new Jogador(txtNomeJogador4.getText(), 0, 0, false, null, null, 5);
 		if (!jogador1.getNome().equals("") && !jogador2.getNome().equals("")) {
 			switch (getQuantidadeJogadores()) {
 			case 2:

@@ -15,7 +15,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.SortedSet;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -804,19 +803,37 @@ public class GuiPrincipal extends JFrame {
 		
 		switch (getJogadorAtualId()) {
 		case 1:
-			nome = this.jogador2.getNome();
-			this.jogadorAtual = this.jogador2;
-			setJogadorAtualId(2);
+			if(this.jogador2!=null){
+				nome = this.jogador2.getNome();
+				this.jogadorAtual = this.jogador2;
+				setJogadorAtualId(2);
+			}else if(this.jogador3!=null){
+				nome = this.jogador3.getNome();
+				this.jogadorAtual = this.jogador3;
+				setJogadorAtualId(3);
+			}else if(this.jogador4!=null){
+				nome = this.jogador4.getNome();
+				this.jogadorAtual = this.jogador4;
+				setJogadorAtualId(4);
+			}else{
+				telaFinal(this.jogador1);
+			}
 			break;
 		case 2:
 			if(this.jogador3!=null){
 				nome = this.jogador3.getNome();
 				this.jogadorAtual = this.jogador3;
 				setJogadorAtualId(3);
-			}else{
+			}else if(this.jogador4!=null){
+				nome = this.jogador4.getNome();
+				this.jogadorAtual = this.jogador4;
+				setJogadorAtualId(4);
+			}else if(this.jogador1!=null){
 				nome = this.jogador1.getNome();
 				this.jogadorAtual = this.jogador1;
 				setJogadorAtualId(1);
+			}else{
+				telaFinal(this.jogador2);
 			}
 			break;
 		case 3:
@@ -824,27 +841,49 @@ public class GuiPrincipal extends JFrame {
 				nome = this.jogador4.getNome();
 				this.jogadorAtual = this.jogador4;
 				setJogadorAtualId(4);
-			}else{
+			}else if(this.jogador1!=null){
 				nome = this.jogador1.getNome();
 				this.jogadorAtual = this.jogador1;
 				setJogadorAtualId(1);
+			}else if(this.jogador2!=null){
+				nome = this.jogador2.getNome();
+				this.jogadorAtual = this.jogador2;
+				setJogadorAtualId(2);
+			}else{
+				telaFinal(this.jogador3);
 			}
 			break;
 		case 4:
-			nome = this.jogador1.getNome();
-			this.jogadorAtual = this.jogador1;
-			setJogadorAtualId(1);
+			if(this.jogador1!=null){
+				nome = this.jogador1.getNome();
+				this.jogadorAtual = this.jogador1;
+				setJogadorAtualId(1);
+			}else if(this.jogador2!=null){
+				nome = this.jogador2.getNome();
+				this.jogadorAtual = this.jogador2;
+				setJogadorAtualId(2);
+			}else if(this.jogador3!=null){
+				nome = this.jogador3.getNome();
+				this.jogadorAtual = this.jogador3;
+				setJogadorAtualId(3);
+			}else{
+				telaFinal(this.jogador4);
+			}
 			break;
 		}
 		
 		if(getJogadorAtualId()==jogadorIniciante){
 			rodada++;
 			lblRodada.setText("Rodada: "+rodada);
-			if(jogador1.getSemJogar()>0){
-				jogador1.setSemJogar(jogador1.getSemJogar()-1);
+			if(jogador1!=null){
+				if(jogador1.getSemJogar()>0){
+					jogador1.setSemJogar(jogador1.getSemJogar()-1);
+				}
 			}
-			if(jogador2.getSemJogar()>0){
-				jogador2.setSemJogar(jogador2.getSemJogar()-1);
+			if(jogador2!=null){
+				if(jogador2.getSemJogar()>0){
+					jogador2.setSemJogar(jogador2.getSemJogar()-1);
+				}
 			}
 			if(jogador3!=null){
 				if(jogador3.getSemJogar()>0){
@@ -1040,6 +1079,8 @@ public class GuiPrincipal extends JFrame {
 						- quantidade);
 			} else {
 				this.jogador1.setDocumentos(0);
+				lblLegendaJogador1.setText(this.jogador1.getNome()+" (Eliminado)");
+				this.jogador1 = null;
 			}
 			break;
 		case 2:
@@ -1048,6 +1089,8 @@ public class GuiPrincipal extends JFrame {
 						- quantidade);
 			} else {
 				this.jogador2.setDocumentos(0);
+				lblLegendaJogador2.setText(this.jogador2.getNome()+" (Eliminado)");
+				this.jogador2 = null;
 			}
 			break;
 		case 3:
@@ -1056,6 +1099,8 @@ public class GuiPrincipal extends JFrame {
 						- quantidade);
 			} else {
 				this.jogador3.setDocumentos(0);
+				lblLegendaJogador1.setText(this.jogador3.getNome()+" (Eliminado)");
+				this.jogador3 = null;
 			}
 			break;
 		case 4:
@@ -1064,9 +1109,20 @@ public class GuiPrincipal extends JFrame {
 						- quantidade);
 			} else {
 				this.jogador4.setDocumentos(0);
+				lblLegendaJogador1.setText(this.jogador4.getNome()+" (Eliminado)");
+				this.jogador4 = null;
 			}
 			break;
 		}
+	}
+	
+	public void telaFinal(Jogador jogador){
+		JOptionPane.showMessageDialog(null, "Parabéns "+jogador.getNome()+". Você venceu!!!");
+		this.setVisible(false);
+		GuiInicio guiInicio = new GuiInicio();
+		guiInicio.setResizable(false);
+		guiInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		guiInicio.setVisible(true);
 	}
 
 	public static void abrir(Jogador jogador1, Jogador jogador2) {
@@ -1112,8 +1168,8 @@ public class GuiPrincipal extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		Jogador jogador1 = new Jogador("Vini", 0, 0, false, null, null, 5);
-		Jogador jogador2 = new Jogador("Mah", 0, 0, false, null, null, 5);
+		Jogador jogador1 = new Jogador("Vini", 0, 0, false, null, null, 1);
+		Jogador jogador2 = new Jogador("Mah", 0, 0, false, null, null, 1);
 		GuiPrincipal.abrir(jogador1, jogador2);
 	}
 
