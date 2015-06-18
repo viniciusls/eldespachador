@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -112,28 +114,8 @@ public class GuiPrincipal extends JFrame {
 
 				d.width - 982, d.width - 982, d.width - 982, d.width - 982,
 				d.width - 982, d.width - 982, d.width - 982, d.width - 982,
-				d.width - 982, d.width - 982, d.width - 982, d.width - 927,
-				/* caminho cinza */d.width - 865, d.width - 865, d.width - 865,
-				d.width - 865,
-				d.width - 865,
-				d.width - 865,
-				d.width - 813,
-				d.width - 761,
-				d.width - 709,
-				d.width - 656,
-				d.width - 604,
-				d.width - 552,
-				d.width - 500, // 1102
-				/* caminho vermelho */d.width - 813, d.width - 813,
-				d.width - 813, d.width - 813, d.width - 813, d.width - 760,
-				d.width - 708, d.width - 656, d.width - 604, d.width - 552,
-				d.width - 500,
-				/* caminho amarelo */d.width - 762, d.width - 762,
-				d.width - 762, d.width - 762, d.width - 709, d.width - 656,
-				d.width - 604, d.width - 552, d.width - 500,
-				/* caminho verde */d.width - 709, d.width - 709, d.width - 709,
-				d.width - 657, d.width - 603, d.width - 550, d.width - 497,
-				d.width - 445 };
+				d.width - 982, d.width - 982, d.width - 982, d.width - 927
+				};
 
 		int[] xp2 = { d.width - 172, d.width - 172, d.width - 172,
 				d.width - 172, d.width - 172, d.width - 172, d.width - 172,
@@ -147,28 +129,8 @@ public class GuiPrincipal extends JFrame {
 
 				d.width - 957, d.width - 957, d.width - 957, d.width - 957,
 				d.width - 957, d.width - 957, d.width - 957, d.width - 957,
-				d.width - 957, d.width - 957, d.width - 957, d.width - 904,
-				/* caminho cinza */d.width - 865, d.width - 865, d.width - 865,
-				d.width - 865,
-				d.width - 865,
-				d.width - 865,
-				d.width - 813,
-				d.width - 761,
-				d.width - 709,
-				d.width - 656,
-				d.width - 604,
-				d.width - 552,
-				d.width - 500, // 1128
-				/* caminho vermelho */d.width - 813, d.width - 813,
-				d.width - 813, d.width - 813, d.width - 813, d.width - 760,
-				d.width - 708, d.width - 656, d.width - 604, d.width - 552,
-				d.width - 500
-				/* caminho amarelo */, d.width - 762, d.width - 762,
-				d.width - 762, d.width - 762, d.width - 709, d.width - 656,
-				d.width - 604, d.width - 552, d.width - 500
-				/* caminho verde */, d.width - 709, d.width - 709,
-				d.width - 709, d.width - 657, d.width - 603, d.width - 550,
-				d.width - 497, d.width - 445 };
+				d.width - 957, d.width - 957, d.width - 957, d.width - 904
+				};
 
 		int[] xp3 = { d.width - 198, d.width - 198, d.width - 198,
 				d.width - 198, d.width - 198, d.width - 198, d.width - 198,
@@ -182,28 +144,8 @@ public class GuiPrincipal extends JFrame {
 
 				d.width - 982, d.width - 982, d.width - 982, d.width - 982,
 				d.width - 982, d.width - 982, d.width - 982, d.width - 982,
-				d.width - 982, d.width - 982, d.width - 982, d.width - 927,
-				/* caminho cinza */d.width - 865, d.width - 865, d.width - 865,
-				d.width - 865,
-				d.width - 865,
-				d.width - 865,
-				d.width - 813,
-				d.width - 761,
-				d.width - 709,
-				d.width - 656,
-				d.width - 604,
-				d.width - 552,
-				d.width - 500, // 1102
-				/* caminho vermelho */d.width - 813, d.width - 813,
-				d.width - 813, d.width - 813, d.width - 813, d.width - 760,
-				d.width - 708, d.width - 656, d.width - 604, d.width - 552,
-				d.width - 500
-				/* caminho amarelo */, d.width - 762, d.width - 762,
-				d.width - 762, d.width - 762, d.width - 709, d.width - 656,
-				d.width - 604, d.width - 552, d.width - 500,
-				/* caminho verde */d.width - 709, d.width - 709, d.width - 709,
-				d.width - 657, d.width - 603, d.width - 550, d.width - 497,
-				d.width - 445 };
+				d.width - 982, d.width - 982, d.width - 982, d.width - 927
+				};
 
 		int[] xp4 = { d.width - 172, d.width - 172, d.width - 172,
 				d.width - 172, d.width - 172, d.width - 172, d.width - 172,
@@ -217,65 +159,25 @@ public class GuiPrincipal extends JFrame {
 
 				d.width - 957, d.width - 957, d.width - 957, d.width - 957,
 				d.width - 957, d.width - 957, d.width - 957, d.width - 957,
-				d.width - 957, d.width - 957, d.width - 957, d.width - 904,
-				/* caminho cinza */d.width - 865, d.width - 865, d.width - 865,
-				d.width - 865,
-				d.width - 865,
-				d.width - 865,
-				d.width - 813,
-				d.width - 761,
-				d.width - 709,
-				d.width - 656,
-				d.width - 604,
-				d.width - 552,
-				d.width - 500, // 1128
-				/* caminho vermelho */d.width - 813, d.width - 813,
-				d.width - 813, d.width - 813, d.width - 813, d.width - 760,
-				d.width - 708, d.width - 656, d.width - 604, d.width - 552,
-				d.width - 500
-				/* caminho amarelo */, d.width - 762, d.width - 762,
-				d.width - 762, d.width - 762, d.width - 709, d.width - 656,
-				d.width - 604, d.width - 552, d.width - 500,
-				/* caminho verde */d.width - 709, d.width - 709, d.width - 709,
-				d.width - 657, d.width - 603, d.width - 550, d.width - 497,
-				d.width - 445 };
+				d.width - 957, d.width - 957, d.width - 957, d.width - 904
+				};
 
 		int[] yp1 = { 50, 130, 181, 234, 287, 340, 390, 440, 492, 545, 596,
 				649, 649, 649, 649, 649, 649, 649, 649, 649, 649, 649, 649,
 				649, 649, 649, 649,/* */598, 546, 494, 443, 391, 339, 287,
-				236, 184, 132, 80, 80,
-				/* caminho cinza */144, 194, 244, 297, 350, 403, 403, 403, 403,
-				403, 403, 403, 403,
-				/* caminho vermelho */144, 194, 244, 297, 350, 350, 350, 350,
-				350, 350, 350, 144, 194, 244, 297, 297, 297, 297, 297, 297
-				/* caminho verde */, 144, 194, 244, 244, 244, 244, 244 };
+				236, 184, 132, 80, 80 };
 		int[] yp2 = { 50, 130, 181, 234, 287, 340, 390, 440, 492, 545, 596,
 				649, 649, 649, 649, 649, 649, 649, 649, 649, 649, 649, 649,
 				649, 649, 649, 649, /* */598, 546, 494, 443, 391, 339, 287,
-				236, 184, 132, 80, 80,
-				/* caminho cinza */144, 194, 244, 297, 350, 403, 403, 403, 403,
-				403, 403, 403, 403,
-				/* caminho vermelho */144, 194, 244, 297, 350, 350, 350, 350,
-				350, 350, 350, 144, 194, 244, 297, 297, 297, 297, 297, 297
-				/* caminho verde */, 144, 194, 244, 244, 244, 244, 244 };
+				236, 184, 132, 80, 80 };
 		int[] yp3 = { 75, 154, 205, 260, 313, 366, 418, 468, 518, 568, 618,
 				672, 672, 672, 672, 672, 672, 672, 672, 672, 672, 672, 672,
 				672, 672, 672, 672, /* */620, 568, 516, 465, 413, 361, 309,
-				258, 206, 154, 102, 102,
-				/* caminho cinza */144, 194, 244, 297, 350, 403, 403, 403, 403,
-				403, 403, 403, 403,
-				/* caminho vermelho */144, 194, 244, 297, 350, 403, 403, 403,
-				350, 350, 350, 144, 194, 244, 297, 297, 297, 297, 297, 297
-				/* caminho verde */, 144, 194, 244, 244, 244, 244, 244 };
+				258, 206, 154, 102, 102 };
 		int[] yp4 = { 75, 154, 205, 260, 313, 366, 418, 468, 518, 568, 618,
 				672, 672, 672, 672, 672, 672, 672, 672, 672, 672, 672, 672,
 				672, 672, 672, 672, /* */620, 568, 516, 465, 413, 361, 309,
-				258, 206, 154, 102, 102,
-				/* caminho cinza */144, 194, 244, 297, 350, 403, 403, 403, 403,
-				403, 403, 403, 403,
-				/* caminho vermelho */144, 194, 244, 297, 350, 403, 403, 403,
-				350, 350, 350, 144, 194, 244, 297, 297, 297, 297, 297, 297,
-				/* caminho verde */144, 194, 244, 244, 244, 244, 244 };
+				258, 206, 154, 102, 102 };
 
 		if (!isMove) {
 			try {
@@ -345,6 +247,98 @@ public class GuiPrincipal extends JFrame {
 			}
 		}
 	}
+	
+	public void drawPinosParametrizacao(int pos, int pino, String cor){
+		int[] xcinza = {d.width - 865, d.width - 865,d.width - 865, d.width - 865, d.width - 865, d.width - 865, 
+				d.width - 813, d.width - 761, d.width - 709, d.width - 656, d.width - 604, d.width - 552, d.width - 500};
+		
+		int[] xvermelho = {d.width - 813,d.width -  813,d.width -  813, d.width - 813, d.width -813, d.width - 760,
+				d.width - 708 , d.width - 656,d.width -604, d.width -552, d.width -500};
+		
+		int[] xamarelo = {d.width - 762, d.width - 762,d.width - 762,d.width - 762,d.width - 709, d.width -656, d.width - 604, d.width - 552, d.width - 500};
+		
+		int[] xverde = {d.width - 709,d.width - 709, d.width - 709,d.width - 657,d.width - 603, d.width - 550,d.width - 497,d.width - 445};
+		
+		
+		
+		int[] ycinza = {144, 194, 244, 297, 350, 403, 403, 403, 403, 403, 403, 403, 403};
+		
+		int[] yvermelho = {144, 194, 244, 297, 350, 403, 403, 403, 350, 350, 350 , 144, 194, 244, 297, 297, 297, 297, 297, 297};
+		
+		int[] yamarelo = {144, 194, 244, 297, 297, 297, 297, 297, 297};
+		
+		int[] yverde = {144, 194,244, 244, 244, 244, 244};
+		
+		
+		switch (cor){
+		
+		case "Verde":
+			switch (pino) {
+				case 1:
+					lblPino1.setBounds(xverde[pos], yverde[pos], 12, 12);
+					break;
+				case 2:
+					lblPino2.setBounds(xverde[pos], yverde[pos], 12, 12);
+					break;
+				case 3:
+					lblPino3.setBounds(xverde[pos], yverde[pos], 12, 12);
+					break;
+				case 4:
+					lblPino4.setBounds(xverde[pos], yverde[pos], 12, 12);
+					break;
+			}
+			break;
+		case "Amarelo":
+			switch (pino) {
+			case 1:
+				lblPino1.setBounds(xamarelo[pos], yamarelo[pos], 12, 12);
+				break;
+			case 2:
+				lblPino2.setBounds(xamarelo[pos], yamarelo[pos], 12, 12);
+				break;
+			case 3:
+				lblPino3.setBounds(xamarelo[pos], yamarelo[pos], 12, 12);
+				break;
+			case 4:
+				lblPino4.setBounds(xamarelo[pos], yamarelo[pos], 12, 12);
+				break;
+			}
+			break;
+		case "Vermelho":
+			switch (pino) {
+			case 1:
+				lblPino1.setBounds(xvermelho[pos], yvermelho[pos], 12, 12);
+				break;
+			case 2:
+				lblPino2.setBounds(xvermelho[pos], xvermelho[pos], 12, 12);
+				break;
+			case 3:
+				lblPino3.setBounds(xvermelho[pos], xvermelho[pos], 12, 12);
+				break;
+			case 4:
+				lblPino4.setBounds(xvermelho[pos], xvermelho[pos], 12, 12);
+				break;
+			}
+			break;
+		case "Cinza":
+			switch (pino) {
+			case 1:
+				lblPino1.setBounds(xcinza[pos], ycinza[pos], 12, 12);
+				break;
+			case 2:
+				lblPino2.setBounds(xcinza[pos], ycinza[pos], 12, 12);
+				break;
+			case 3:
+				lblPino3.setBounds(xcinza[pos], ycinza[pos], 12, 12);
+				break;
+			case 4:
+				lblPino4.setBounds(xcinza[pos], ycinza[pos], 12, 12);
+				break;
+			}
+			break;
+		
+		}
+	}
 
 	public GuiPrincipal() {
 		inicializarComponentes(null, null, null, null);
@@ -354,9 +348,9 @@ public class GuiPrincipal extends JFrame {
 	public GuiPrincipal(Jogador jogador1, Jogador jogador2) {
 		setQuantidadeJogadores(2);
 		inicializarComponentes(jogador1, jogador2, null, null);
-		//for(int i = 0; i<79; i++){
-		drawPinos(0, 0, false);
-		//}
+		for(int i = 0; i<39; i++){
+		drawPinos(i, 0, false);
+		}
 		definirEventos();
 		definirProdutos();
 		selecionarIniciante();
@@ -592,6 +586,37 @@ public class GuiPrincipal extends JFrame {
 				alterarJogador();
 			}
 
+		});
+		
+		lblCartaJogador.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				GuiImagem.abrir(jogadorAtual.getProduto().getCodigo()+"_Card.png", 456, 471);				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
 		});
 
 	}
@@ -982,8 +1007,8 @@ public class GuiPrincipal extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		Jogador jogador1 = new Jogador("Vini", 0, 0, false, null, 5);
-		Jogador jogador2 = new Jogador("Mah", 0, 0, false, null, 5);
+		Jogador jogador1 = new Jogador("Vini", 0, 0, false, null, null, 5);
+		Jogador jogador2 = new Jogador("Mah", 0, 0, false, null, null, 5);
 		GuiPrincipal.abrir(jogador1, jogador2);
 	}
 

@@ -6,18 +6,20 @@ public class Jogador {
 	private int posicao;
 	private int semJogar;
 	private boolean isParametrizacao;
+	private String cor;
 	private Produto produto;
 	private int documentos;
 	
 	public Jogador(){}
 	
 	public Jogador(String nome, int posicao, int semJogar,
-			boolean isParametrizacao, Produto produto, int documentos) {
+			boolean isParametrizacao, String cor, Produto produto, int documentos) {
 		super();
 		this.nome = nome;
 		this.posicao = posicao;
 		this.semJogar = semJogar;
 		this.isParametrizacao = isParametrizacao;
+		this.cor = cor;
 		this.produto = produto;
 		this.documentos = documentos;
 	}
@@ -64,6 +66,14 @@ public class Jogador {
 
 	public void setParametrizacao(boolean isParametrizacao) {
 		this.isParametrizacao = isParametrizacao;
+	}
+	
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 
 	public Produto getProduto() {
