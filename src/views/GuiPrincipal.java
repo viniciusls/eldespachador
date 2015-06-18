@@ -54,6 +54,7 @@ public class GuiPrincipal extends JFrame {
 	private JMenuItem miSobre, miSair; // mnPrincipal;
 	private JMenuItem miAjuda; // mnAjuda;
 	private Dimension d;
+	private ArrayList<String> cores;
 
 	/**
 	 * @return the quantidadeJogadores
@@ -349,9 +350,9 @@ public class GuiPrincipal extends JFrame {
 	public GuiPrincipal(Jogador jogador1, Jogador jogador2) {
 		setQuantidadeJogadores(2);
 		inicializarComponentes(jogador1, jogador2, null, null);
-		for(int i = 0; i<39; i++){
-		drawPinos(i, 0, false);
-		}
+		//for(int i = 0; i<39; i++){
+		drawPinos(0, 0, false);
+		//}
 		definirEventos();
 		definirProdutos();
 		selecionarIniciante();
@@ -545,6 +546,12 @@ public class GuiPrincipal extends JFrame {
 		lblRodada.setFont(f1);
 		lblDocumentos.setFont(f1);
 		setJMenuBar(mb);
+		
+		cores = new ArrayList<String>();		
+		cores.add("Verde");
+		cores.add("Amarelho");
+		cores.add("Vermelho");
+		cores.add("Cinza");
 	}
 
 	private void definirEventos() {
@@ -990,19 +997,51 @@ public class GuiPrincipal extends JFrame {
 		switch (getJogadorAtualId()) {
 		case 1:
 			this.jogador1.setPosicao(this.jogador1.getPosicao() + quantidade);
-			drawPinos(this.jogador1.getPosicao(), 1, true);
+			if(this.jogador1.getPosicao()<=39){
+				drawPinos(this.jogador1.getPosicao(), 1, true);
+			}else{
+				if(this.jogador1.getPosicao()>39 && !this.jogador1.isParametrizacao()){
+					this.jogador1.setParametrizacao(true);
+					this.jogador1.setCor(selecionarCor());
+				}
+				drawPinosParametrizacao(this.jogador1.getPosicao(), 1, this.jogador1.getCor());
+			}
 			break;
 		case 2:
 			this.jogador2.setPosicao(this.jogador2.getPosicao() + quantidade);
-			drawPinos(this.jogador2.getPosicao(), 2, true);
+			if(this.jogador2.getPosicao()<=39){
+				drawPinos(this.jogador2.getPosicao(), 2, true);
+			}else{
+				if(this.jogador2.getPosicao()>39 && !this.jogador2.isParametrizacao()){
+					this.jogador2.setParametrizacao(true);
+					this.jogador2.setCor(selecionarCor());
+				}
+				drawPinosParametrizacao(this.jogador2.getPosicao(), 2, this.jogador2.getCor());
+			}
 			break;
 		case 3:
 			this.jogador3.setPosicao(this.jogador3.getPosicao() + quantidade);
-			drawPinos(this.jogador3.getPosicao(), 3, true);
+			if(this.jogador3.getPosicao()<=39){
+				drawPinos(this.jogador3.getPosicao(), 3, true);
+			}else{
+				if(this.jogador3.getPosicao()>39 && !this.jogador3.isParametrizacao()){
+					this.jogador3.setParametrizacao(true);
+					this.jogador3.setCor(selecionarCor());
+				}
+				drawPinosParametrizacao(this.jogador3.getPosicao(), 3, this.jogador3.getCor());
+			}
 			break;
 		case 4:
 			this.jogador4.setPosicao(this.jogador4.getPosicao() + quantidade);
-			drawPinos(this.jogador4.getPosicao(), 4, true);
+			if(this.jogador4.getPosicao()<=39){
+				drawPinos(this.jogador4.getPosicao(), 2, true);
+			}else{
+				if(this.jogador4.getPosicao()>39 && !this.jogador4.isParametrizacao()){
+					this.jogador4.setParametrizacao(true);
+					this.jogador4.setCor(selecionarCor());
+				}
+				drawPinosParametrizacao(this.jogador4.getPosicao(), 4, this.jogador4.getCor());
+			}
 			break;
 		}
 	}
@@ -1116,13 +1155,36 @@ public class GuiPrincipal extends JFrame {
 		}
 	}
 	
+	public String selecionarCor(){
+		String cor = "";
+		Collections.shuffle(cores);
+		cor = cores.get(0);
+		cores.remove(0);
+		JOptionPane.showMessageDialog(null, "Sua cor é: "+cor+". Na parametrização você usará está cor para definir seu caminho e suas cartas!");
+		switch (getJogadorAtualId()) {
+		case 1:
+			this.jogador1.setCor(cor);
+			break;
+		case 2:
+			this.jogador2.setCor(cor);
+			break;
+		case 3:
+			this.jogador3.setCor(cor);
+			break;
+		case 4:
+			this.jogador4.setCor(cor);
+			break;
+		}
+		return cor;
+	}
+	
 	public void telaFinal(Jogador jogador){
 		JOptionPane.showMessageDialog(null, "Parabéns "+jogador.getNome()+". Você venceu!!!");
 		this.setVisible(false);
 		GuiInicio guiInicio = new GuiInicio();
-		guiInicio.setResizable(false);
-		guiInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		guiInicio.setVisible(true);
+		String array[] = new String[1];
+		guiInicio.main(array);
+		return;
 	}
 
 	public static void abrir(Jogador jogador1, Jogador jogador2) {
@@ -1168,8 +1230,8 @@ public class GuiPrincipal extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		Jogador jogador1 = new Jogador("Vini", 0, 0, false, null, null, 1);
-		Jogador jogador2 = new Jogador("Mah", 0, 0, false, null, null, 1);
+		Jogador jogador1 = new Jogador("Vini", 0, 0, false, null, null, 5);
+		Jogador jogador2 = new Jogador("Mah", 0, 0, false, null, null, 5);
 		GuiPrincipal.abrir(jogador1, jogador2);
 	}
 
